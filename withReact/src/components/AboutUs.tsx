@@ -1,26 +1,9 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <title>ColabMe - Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!--links to css and js-->
-    <link rel="stylesheet" href="../style/aboutUs.css" />
-    <link rel="stylesheet" href="../style/all.css" />
-    <script type="module" src="../js/home.js" defer></script>
-  </head>
+import "../style/aboutUs.scss";
 
-  <body>
-    <!--navigation bar-->
-    <header>
-      <nav role="navigation" aria-label="Main navigation">
-        <a href="./home.html">Home</a>
-        <a href="./aboutUs.html" class="active" aria-current="page">About Us</a>
-      </nav>
-    </header>
-
-    <!--description of the web page-->
-    <main role="main">
+function AboutUs() {
+  return (
+    <div className="AboutUs">
+      <main role="main">
       <section>
         <h1>About ColabMe</h1>
         <p>
@@ -43,5 +26,8 @@
         </p>
       </section>
     </main>
-  </body>
-</html>
+    </div>
+  );
+}
+
+export default AboutUs;

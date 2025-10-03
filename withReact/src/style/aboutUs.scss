@@ -1,0 +1,59 @@
+@use "variables" as *;
+
+//main
+main {
+  padding: 5%;
+
+  @include mobile {
+    padding: 3%;
+  }
+
+  section {
+    padding: 1rem;
+    border-radius: 4px;
+    color: $white;
+    background-color: $dark-grey;
+
+    @include mobile {
+      padding: 0.875rem;
+    }
+
+    h1 {
+      @include mobile {
+        font-size: 1.8rem;
+      }
+
+      @include tablet {
+        font-size: 2.2rem;
+      }
+    }
+
+    h2 {
+      margin-top: 3rem;
+
+      @include mobile {
+        margin-top: 2rem;
+        font-size: 1.3rem;
+      }
+
+      @include tablet {
+        margin-top: 2.5rem;
+        font-size: 1.5rem;
+      }
+    }
+
+    p {
+      line-height: 1.6;
+
+      @include mobile {
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      @include tablet {
+        font-size: 1rem;
+        line-height: 1.55;
+      }
+    }
+  }
+}
