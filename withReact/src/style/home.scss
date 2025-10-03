@@ -82,6 +82,7 @@ main {
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
+    background-color: $black;
 
     @include mobile {
       gap: 1rem;
