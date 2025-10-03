@@ -12,6 +12,23 @@ const fetchUserTasks = async function (userId) {
   return elements;
 };
 
+// post task
+const postTask = async function (userId){
+  const res = await fetch('https://jsonplaceholder.typicode.com/todos', {
+  method: 'POST',
+  body: JSON.stringify({
+    title: 'foo',
+    userId: userId,
+  }),
+  headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+  },
+})
+  const elements = await res.json();
+  return elements;
+}
+
+
 const displayUserPage = async function() {
   try {
     // Get the selected user ID from localStorage
