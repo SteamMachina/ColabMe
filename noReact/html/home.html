@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>ColabMe - Home</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--links to css and js-->
+    <link rel="stylesheet" href="../style/home.css" />
+    <link rel="stylesheet" href="../style/all.css" />
+    <script type="module" src="../js/home.js" defer></script>
+    <!--Opengraph-->
+    <!-- <meta property="og:title" content="Potter Web" />
+    <meta property="og:type" content="video.movie" />
+    <meta property="og:url" content="https://www.imdb.com/title/tt0117500/" />
+    <meta
+      property="og:image"
+      content="https://ia.media-imdb.com/images/rock.jpg"
+    /> -->
+
+    <!-- Add Google Material Icons -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <a href="./home.html">Home</a>
+        <a href="./aboutUs.html">About Us</a>
+        <a href="./user.html">User</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="description">
+        <h1>Collaborative Management</h1>
+        <p>View and manage your team members' projects</p>
+      </section>
+
+      <section id="search">
+        <!--icon-->
+        <span class="material-icons">search</span>
+        <!--search bar-->
+        <input type="search" placeholder="Search a collaborator" />
+        <!--form-->
+        <form action="">
+          <label for="category">Filter by :</label>
+          <select id="category" name="category">
+            <option value="name">name</option>
+            <option value="characters">Characters</option>
+            <option value="houses">Houses</option>
+            <option value="spells">Spells</option>
+          </select>
+        </form>
+      </section>
+
+      <section id="grid">
+        <div class="card">
+          <div class="user-info">
+            <h3>Name</h3>
+            <p><span class="material-icons">email</span> Email</p>
+            <p><span class="material-icons">domain</span> Company</p>
+            <p><span class="material-icons">location_on</span> Adress</p>
+          </div>
+          <div class="user-tasks">
+            <p><strong>tasks :</strong> 20</p>
+            <button>Check -></button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

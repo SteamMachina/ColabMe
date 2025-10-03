@@ -1,0 +1,1 @@
+*{box-sizing:border-box}body{margin:0;padding:0;background-color:#000;overflow-x:hidden}header{background-color:#303030;width:100%;padding:2rem;display:flex;align-items:center;gap:1rem}header a{background-color:#303030;padding:1rem;border-radius:4px;color:#fff;text-decoration:none;transition:all .3s ease}header a:hover{background-color:#545454}

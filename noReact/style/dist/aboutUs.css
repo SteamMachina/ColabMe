@@ -1,0 +1,12 @@
+main {
+  padding: 5%;
+}
+main section {
+  padding: 1rem;
+  border-radius: 4px;
+  color: white;
+  background-color: rgb(48, 48, 48);
+}
+main section h3 {
+  margin-top: 3rem;
+}

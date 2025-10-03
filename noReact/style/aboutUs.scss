@@ -1,0 +1,16 @@
+@import "variables";
+
+main {
+  padding: 5%;
+
+  section {
+    padding: 1rem;
+    border-radius: 4px;
+    color: $white;
+    background-color: $dark-grey;
+
+    h3{
+        margin-top: 3rem;
+    }
+  }
+}
