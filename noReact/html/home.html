@@ -8,14 +8,6 @@
     <link rel="stylesheet" href="../style/home.css" />
     <link rel="stylesheet" href="../style/all.css" />
     <script type="module" src="../js/home.js" defer></script>
-    <!--Opengraph-->
-    <!-- <meta property="og:title" content="Potter Web" />
-    <meta property="og:type" content="video.movie" />
-    <meta property="og:url" content="https://www.imdb.com/title/tt0117500/" />
-    <meta
-      property="og:image"
-      content="https://ia.media-imdb.com/images/rock.jpg"
-    /> -->
 
     <!-- Add Google Material Icons -->
     <link
@@ -26,13 +18,13 @@
 
   <body>
     <header>
-      <nav>
-        <a href="./home.html" class="active">Home</a>
+      <nav role="navigation" aria-label="Main navigation">
+        <a href="./home.html" class="active" aria-current="page">Home</a>
         <a href="./aboutUs.html">About Us</a>
       </nav>
     </header>
 
-    <main>
+    <main role="main">
       <section id="description">
         <h1>Collaborative Management</h1>
         <p>View and manage your team members' projects</p>
@@ -40,12 +32,12 @@
 
       <section id="search">
         <!--icon-->
-        <span class="material-icons">search</span>
+        <span class="material-icons" aria-hidden="true">search</span>
         <!--search bar-->
-        <input id="search-input" type="search" placeholder="Search a collaborator" />
+        <input id="search-input" type="search" placeholder="Search a collaborator" aria-label="Search collaborators" />
       </section>
 
-      <section id="grid">
+      <section id="grid" role="region" aria-label="User cards">
       </section>
     </main>
   </body>

@@ -13,11 +13,11 @@ const fetchUserTasks = async function (userId) {
 };
 
 // post task
-const postTask = async function (userId){
+const postTask = async function (userId, taskTitle){
   const res = await fetch('https://jsonplaceholder.typicode.com/todos', {
   method: 'POST',
   body: JSON.stringify({
-    title: 'foo',
+    title: taskTitle,
     userId: userId,
   }),
   headers: {
@@ -113,4 +113,54 @@ const updateTaskCounter = function() {
 // Call the function when the page loads
 document.addEventListener("DOMContentLoaded", function() {
   displayUserPage();
+  
+  // Add event listener for the "Add task" button
+  const addTaskBtn = document.getElementById("add-task-btn");
+  const newTaskInput = document.getElementById("new-task-input");
+  
+  if (addTaskBtn && newTaskInput) {
+    addTaskBtn.addEventListener("click", addNewTask);
+    newTaskInput.addEventListener("keypress", function(e) {
+      if (e.key === "Enter") addNewTask();
+    });
+  }
 });
+
+// Function to add a new task
+const addNewTask = async function() {
+  const newTaskInput = document.getElementById("new-task-input");
+  const taskText = newTaskInput.value.trim();
+  const selectedUserId = localStorage.getItem("selectedUserId");
+  
+  if (taskText.length < 5) {
+    alert("Task must have at least 5 characters");
+    return;
+  }
+  
+  try {
+    // Post the new task
+    const newTask = await postTask(selectedUserId, taskText);
+    
+    // Add task to the grid
+    const tasksGrid = document.getElementById("grid");
+    tasksGrid.innerHTML += `
+      <div class="task-box">
+        <input type="checkbox" id="task-${newTask.id}" name="task-${newTask.id}" />
+        <label for="task-${newTask.id}"> ${newTask.title}</label><br>
+      </div>
+    `;
+    
+    // Add event listener to new checkbox
+    const newCheckbox = document.querySelector(`#task-${newTask.id}`);
+    newCheckbox.addEventListener('change', updateTaskCounter);
+    
+    // Clear input and update counter
+    newTaskInput.value = "";
+    updateTaskCounter();
+    newTaskInput.focus();
+    
+  } catch (error) {
+    console.error("Error adding task:", error);
+    alert("Failed to add task");
+  }
+};

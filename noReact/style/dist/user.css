@@ -57,22 +57,64 @@ main #tasks #description {
     text-align: center;
   }
 }
-main #tasks #description button {
+main #tasks #description #add-task-form {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+@media (max-width: 767px) {
+  main #tasks #description #add-task-form {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+main #tasks #description #add-task-form #new-task-input {
+  padding: 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: rgb(48, 48, 48);
+  color: white;
+  min-width: 200px;
+  font-size: 1rem;
+}
+@media (max-width: 767px) {
+  main #tasks #description #add-task-form #new-task-input {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+    width: 100%;
+    min-width: unset;
+  }
+}
+main #tasks #description #add-task-form #new-task-input::placeholder {
+  color: rgb(84, 84, 84);
+}
+main #tasks #description #add-task-form #new-task-input:focus {
+  outline: 2px solid rgb(1, 203, 136);
+  background-color: rgba(1, 203, 136, 0.1);
+}
+main #tasks #description #add-task-form button {
   padding: 1rem;
   border-radius: 4px;
   background-color: rgb(1, 203, 136);
   border-style: none;
   color: black;
   transition: all 0.3s ease;
+  cursor: pointer;
+  white-space: nowrap;
 }
 @media (max-width: 767px) {
-  main #tasks #description button {
+  main #tasks #description #add-task-form button {
     padding: 0.75rem;
     font-size: 0.9rem;
+    width: 100%;
   }
 }
-main #tasks #description button:hover {
+main #tasks #description #add-task-form button:hover {
   background-color: rgb(2, 148, 100);
+}
+main #tasks #description #add-task-form button:disabled {
+  background-color: rgb(84, 84, 84);
+  cursor: not-allowed;
 }
 main #tasks .task-box {
   margin-top: 1rem;

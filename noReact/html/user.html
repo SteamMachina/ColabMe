@@ -8,14 +8,6 @@
     <link rel="stylesheet" href="../style/user.css" />
     <link rel="stylesheet" href="../style/all.css" />
     <script type="module" src="../js/user.js" defer></script>
-    <!--Opengraph-->
-    <!-- <meta property="og:title" content="Potter Web" />
-    <meta property="og:type" content="video.movie" />
-    <meta property="og:url" content="https://www.imdb.com/title/tt0117500/" />
-    <meta
-      property="og:image"
-      content="https://ia.media-imdb.com/images/rock.jpg"
-    /> -->
 
     <!-- Add Google Material Icons -->
     <link
@@ -26,35 +18,30 @@
 
   <body>
     <header>
-      <nav>
+      <nav role="navigation" aria-label="Main navigation">
         <a href="./home.html">Home</a>
         <a href="./aboutUs.html">About Us</a>
       </nav>
     </header>
 
-    <main>
+    <main role="main">
       <section id="user-info">
         <h3>Name</h3>
-        <p><span class="material-icons">email</span> Email</p>
-        <p><span class="material-icons">domain</span> Company</p>
-        <p><span class="material-icons">location_on</span> Adress</p>
+        <p><span class="material-icons" aria-hidden="true">email</span> Email</p>
+        <p><span class="material-icons" aria-hidden="true">domain</span> Company</p>
+        <p><span class="material-icons" aria-hidden="true">location_on</span> Adress</p>
       </section>
 
       <section id="tasks">
         <div id="description">
           <h3>Tasks</h3>
-          <button>+ Add task</button>
+          <div id="add-task-form">
+            <input type="text" id="new-task-input" placeholder="Enter new task..." aria-label="New task description" />
+            <button id="add-task-btn">+ Add task</button>
+          </div>
         </div>
 
-        <div id="grid">
-          <div class="task-box">
-            <input type="checkbox" id="1" name="1" />
-            <label for="1"> task 1</label><br />
-          </div>
-          <div class="task-box">
-            <input type="checkbox" id="2" name="2" />
-            <label for="2"> task 2</label><br />
-          </div>
+        <div id="grid" role="region" aria-label="Task list">
         </div>
       </section>
     </main>
