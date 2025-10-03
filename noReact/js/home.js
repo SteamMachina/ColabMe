@@ -1,3 +1,4 @@
+// get all users
 const fetchUsers = async function () {
   const res = await fetch(`https://jsonplaceholder.typicode.com/users`);
   const elements = await res.json();
@@ -5,14 +6,15 @@ const fetchUsers = async function () {
   return elements;
 };
 
+// display all users
 const displayAllUsers = async function () {
   try {
     let data = await fetchUsers();
     let grid = document.getElementById("grid");
 
-    // Clear existing content
-    grid.innerHTML = "";
+    grid.innerHTML = ""; // clear existing content
 
+    // add card to html
     data.forEach((user) => {
       let card = `
         <div class="card">
@@ -30,7 +32,7 @@ const displayAllUsers = async function () {
       grid.innerHTML += card;
     });
 
-    // Add event listeners to all user buttons
+    // if user button pressed => navigate to user page
     const userButtons = document.querySelectorAll('.user-btn');
     userButtons.forEach(button => {
       button.addEventListener('click', function() {
@@ -43,24 +45,21 @@ const displayAllUsers = async function () {
   }
 };
 
+// display users with names matching input
 const displaySelectedUser = async function (selectedUser) {
   try {
     let data = await fetchUsers();
     let grid = document.getElementById("grid");
 
-    // Clear existing content
+    // clear existing content
     grid.innerHTML = "";
 
-    // Filter users whose name matches the selectedUser (case-insensitive)
+    // Filtering users depending on names
     const filteredUsers = data.filter((user) =>
       user.name.toLowerCase().includes(selectedUser.toLowerCase())
     );
 
-    if (filteredUsers.length === 0) {
-      grid.innerHTML = "<p>No users found matching your search.</p>";
-      return;
-    }
-
+    // add cards to html
     filteredUsers.forEach((user) => {
       let card = `
         <div class="card">
@@ -79,7 +78,7 @@ const displaySelectedUser = async function (selectedUser) {
       grid.innerHTML += card;
     });
 
-    // Add event listeners to all user buttons
+    // if user button pressed => navigate to user page 
     const userButtons = document.querySelectorAll('.user-btn');
     userButtons.forEach(button => {
       button.addEventListener('click', function() {
@@ -92,18 +91,19 @@ const displaySelectedUser = async function (selectedUser) {
   }
 };
 
+// function to navigate to user.html
 const navigateToUser = function (userId) {
-  console.log('Navigating to user page with ID:', userId); // Debug log
-  // Store the user ID in localStorage so we can use it on the user page
+  // store user id in localStorage
   localStorage.setItem("selectedUserId", userId);
-  // Navigate to the user page
+  // navigate to user.html
   window.location.href = "./user.html";
 };
 
+// run at loading
 document.addEventListener("DOMContentLoaded", function () {
   displayAllUsers();
 
-  // Add event listener for search input
+  // check for inputs in search bar
   let search_input = document.getElementById("search-input");
   search_input.addEventListener("input", function () {
     const selectedUser = this.value.trim();

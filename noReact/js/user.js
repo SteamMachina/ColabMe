@@ -1,3 +1,4 @@
+// get all users
 const fetchUsers = async function () {
   const res = await fetch(`https://jsonplaceholder.typicode.com/users`);
   const elements = await res.json();
@@ -5,6 +6,7 @@ const fetchUsers = async function () {
   return elements;
 };
 
+// get all tasks
 const fetchUserTasks = async function (userId) {
   const res = await fetch(`https://jsonplaceholder.typicode.com/todos?userId=${userId}`);
   const elements = await res.json();
@@ -12,7 +14,7 @@ const fetchUserTasks = async function (userId) {
   return elements;
 };
 
-// post task
+// post new task
 const postTask = async function (userId, taskTitle){
   const res = await fetch('https://jsonplaceholder.typicode.com/todos', {
   method: 'POST',
@@ -31,7 +33,7 @@ const postTask = async function (userId, taskTitle){
 
 const displayUserPage = async function() {
   try {
-    // Get the selected user ID from localStorage
+    // get user id from localStorage
     const selectedUserId = localStorage.getItem("selectedUserId");
     
     if (!selectedUserId) {
@@ -39,11 +41,11 @@ const displayUserPage = async function() {
       return;
     }
 
-    // Fetch all users and user-specific tasks
+    // get all users and tasks of selected user
     const users = await fetchUsers();
     const userTasks = await fetchUserTasks(selectedUserId);
     
-    // Find the specific user by ID
+    // find user by id
     const selectedUser = users.find(user => user.id == selectedUserId);
     
     if (!selectedUser) {
@@ -51,7 +53,7 @@ const displayUserPage = async function() {
       return;
     }
 
-    // Update the user info section
+    // update user info
     const userInfoSection = document.getElementById("user-info");
     if (userInfoSection) {
       userInfoSection.innerHTML = `
@@ -64,7 +66,7 @@ const displayUserPage = async function() {
       `;
     }
 
-    // Update the tasks section
+    // update tasks
     const tasksGrid = document.getElementById("grid");
     if (tasksGrid && userTasks.length > 0) {
       tasksGrid.innerHTML = "";
@@ -81,7 +83,7 @@ const displayUserPage = async function() {
         tasksGrid.innerHTML += taskBox;
       });
 
-      // Add event listeners to all checkboxes for real-time updates
+      // check if a task is checked or unchecked
       const checkboxes = tasksGrid.querySelectorAll('input[type="checkbox"]');
       checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', function() {
@@ -90,7 +92,7 @@ const displayUserPage = async function() {
       });
     }
 
-    // Update the task count in the description
+    // update task count
     updateTaskCounter();
     
   } catch (error) {
@@ -98,7 +100,7 @@ const displayUserPage = async function() {
   }
 };
 
-// Function to update the task counter
+// function to update the task counter
 const updateTaskCounter = function() {
   const checkboxes = document.querySelectorAll('#grid input[type="checkbox"]');
   const totalTasks = checkboxes.length;
@@ -110,19 +112,16 @@ const updateTaskCounter = function() {
   }
 };
 
-// Call the function when the page loads
+// Call function when page loads
 document.addEventListener("DOMContentLoaded", function() {
   displayUserPage();
   
-  // Add event listener for the "Add task" button
+  // check if button pressed
   const addTaskBtn = document.getElementById("add-task-btn");
   const newTaskInput = document.getElementById("new-task-input");
   
   if (addTaskBtn && newTaskInput) {
     addTaskBtn.addEventListener("click", addNewTask);
-    newTaskInput.addEventListener("keypress", function(e) {
-      if (e.key === "Enter") addNewTask();
-    });
   }
 });
 
@@ -138,10 +137,10 @@ const addNewTask = async function() {
   }
   
   try {
-    // Post the new task
+    // Post new task
     const newTask = await postTask(selectedUserId, taskText);
     
-    // Add task to the grid
+    // Add task to grid
     const tasksGrid = document.getElementById("grid");
     tasksGrid.innerHTML += `
       <div class="task-box">
@@ -150,11 +149,11 @@ const addNewTask = async function() {
       </div>
     `;
     
-    // Add event listener to new checkbox
+    // check if new task is checked or not
     const newCheckbox = document.querySelector(`#task-${newTask.id}`);
     newCheckbox.addEventListener('change', updateTaskCounter);
     
-    // Clear input and update counter
+    // clear input and update counter
     newTaskInput.value = "";
     updateTaskCounter();
     newTaskInput.focus();

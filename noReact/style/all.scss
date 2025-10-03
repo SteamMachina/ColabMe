@@ -1,5 +1,6 @@
 @import "variables";
 
+// full page
 * {
     box-sizing: border-box;
 }
@@ -11,6 +12,7 @@ body{
     overflow-x: hidden;
 }
 
+// header
 header{
     background-color: $dark-grey;
     width: 100%;

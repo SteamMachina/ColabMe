@@ -1,5 +1,6 @@
 @import "variables";
 
+// main
 main {
   padding: 5%;
 
@@ -27,6 +28,7 @@ main {
     }
   }
 
+  // search bar
   #search {
     margin-top: 5rem;
     margin-bottom: 5rem;
@@ -75,6 +77,7 @@ main {
     }
   }
 
+  // user card grid
   #grid {
     display: flex;
     flex-wrap: wrap;

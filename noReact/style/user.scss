@@ -1,5 +1,6 @@
 @import "variables";
 
+// main
 main{
     padding: 5%;
 
@@ -7,6 +8,7 @@ main{
         padding: 3%;
     }
 
+    // user info card
     #user-info{
         background-color: $dark-grey;
         border-radius: 4px;
@@ -33,6 +35,7 @@ main{
         }
     }
 
+    // all tasks
     #tasks{
         margin-top: 3rem;
         color: $white;
@@ -41,6 +44,7 @@ main{
             margin-top: 2rem;
         }
 
+        // Header with add task form
         #description{
             display: flex;
             justify-content: space-between;
@@ -59,6 +63,7 @@ main{
                 }
             }
 
+            // add task input and button
             #add-task-form {
                 display: flex;
                 gap: 0.5rem;
@@ -123,6 +128,7 @@ main{
             }
         }
 
+        // task items
         .task-box{
             margin-top: 1rem;
             background-color: $dark-grey;
